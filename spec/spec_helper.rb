@@ -21,7 +21,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
-require 'features/web_helpers'
+require 'features/database_helpers'
 require_relative './setup_test_database'
 
 Capybara.app = BookmarkManager
@@ -33,7 +33,7 @@ RSpec.configure do |config|
   config.before(:each) do
     setup_test_database
   end
-  
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
