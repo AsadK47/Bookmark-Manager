@@ -31,6 +31,11 @@ describe Bookmark do
       expect(bookmark.title).to eq 'Test Bookmark'
       expect(bookmark.url).to eq 'http://www.testbookmark.com'
     end
+
+    it 'does not create a new bookmark if the URL is not valid' do
+     bookmark = Bookmark.create(url: 'not a real bookmark', title: 'not a real bookmark')
+     expect(bookmark).not_to be_a Bookmark
+   end
   end
 
   describe "#.delete" do
@@ -52,6 +57,19 @@ describe Bookmark do
       expect(updated_bookmark.id).to eq bookmark.id
       expect(updated_bookmark.title).to eq 'Snakers Academy'
       expect(updated_bookmark.url).to eq 'http://www.snakersacademy.com'
+    end
+  end
+
+  describe '.find' do
+    it 'returns the requested bookmark object' do
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+
+      result = Bookmark.find(id: bookmark.id)
+
+      expect(result).to be_a Bookmark
+      expect(result.id).to eq bookmark.id
+      expect(result.title).to eq 'Makers Academy'
+      expect(result.url).to eq 'http://www.makersacademy.com'
     end
   end
 
