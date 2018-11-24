@@ -22,7 +22,8 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'features/database_helpers'
-require_relative './setup_test_database'
+require 'setup_test_database'
+require 'pg'
 
 Capybara.app = BookmarkManager
 
